@@ -145,9 +145,9 @@ local executeCorner = Instance.new("UICorner")
 executeCorner.CornerRadius = UDim.new(0, 10)
 executeCorner.Parent = executeButton
 
-fromPet1 = "Marshmallow Kitsune"
-fromPet2 = "Easter Agony"
-fromPet3 = "Basket Bunny"
+fromPet1 = "Diamond Bunny"
+fromPet2 = "Diamond Bunny"
+fromPet3 = "Diamond Bunny"
 toPet = "Titanic Diamond Bunny"
 
 executeButton.MouseButton1Click:Connect(function()
