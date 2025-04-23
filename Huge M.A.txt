@@ -1,0 +1,184 @@
+local message = require(game.ReplicatedStorage.Library.Client.Message)
+local Pets = require(game:GetService("ReplicatedStorage").Library.Directory.Pets)
+
+local gui = Instance.new("ScreenGui")
+gui.Name = "MainGui"
+gui.Parent = game.CoreGui
+gui.Enabled = false  
+
+local loadingGui = Instance.new("ScreenGui")
+loadingGui.Name = "LoadingGui"
+loadingGui.Parent = game.CoreGui
+
+local loadingBox = Instance.new("Frame")
+loadingBox.Parent = loadingGui
+loadingBox.Size = UDim2.new(0.3, 0, 0.3, 0)  
+loadingBox.Position = UDim2.new(0.35, 0, 0.35, 0)  
+loadingBox.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+loadingBox.BorderSizePixel = 0
+
+local loadCorner = Instance.new("UICorner")
+loadCorner.CornerRadius = UDim.new(0, 10)
+loadCorner.Parent = loadingBox
+
+local border = Instance.new("UIStroke")
+border.Parent = loadingBox
+border.Color = Color3.fromRGB(0, 120, 255)  
+border.Thickness = 4  
+
+local titleLabel = Instance.new("TextLabel")
+titleLabel.Parent = loadingBox
+titleLabel.Text = "Huge Luck x10000"
+titleLabel.Size = UDim2.new(1, 0, 0.2, 0)  
+titleLabel.Position = UDim2.new(0, 0, 0, 0)
+titleLabel.BackgroundTransparency = 1
+titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+titleLabel.Font = Enum.Font.SourceSansBold
+titleLabel.TextSize = 20
+
+local loadingLabel = Instance.new("TextLabel")
+loadingLabel.Parent = loadingBox
+loadingLabel.Text = "Loading"
+loadingLabel.Size = UDim2.new(1, 0, 0.3, 0)  
+loadingLabel.Position = UDim2.new(0, 0, 0.25, 0)
+loadingLabel.BackgroundTransparency = 1
+loadingLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+loadingLabel.Font = Enum.Font.SourceSansBold
+loadingLabel.TextSize = 20
+
+local creditsLabel = Instance.new("TextLabel")
+creditsLabel.Parent = loadingBox
+creditsLabel.Text = "Made By Kratos " .. string.char(84, 119, 101, 110, 116, 121, 115, 50, 32, 83, 99, 114, 105, 112, 116, 115)
+creditsLabel.Size = UDim2.new(1, 0, 0.2, 0)
+creditsLabel.Position = UDim2.new(0, 0, 0.6, 0)  
+creditsLabel.BackgroundTransparency = 1
+creditsLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+creditsLabel.Font = Enum.Font.SourceSansBold
+creditsLabel.TextSize = 14
+creditsLabel.TextTransparency = 0.4  
+
+local socialsLabel = Instance.new("TextLabel")
+socialsLabel.Parent = loadingBox
+socialsLabel.Text = "@Kratos x " .. string.char(116, 119, 101, 110, 116, 121, 115, 50, 115, 99, 114, 105, 112, 116, 115)
+socialsLabel.Size = UDim2.new(1, 0, 0.15, 0)  
+socialsLabel.Position = UDim2.new(0, 0, 0.85, 0)  
+socialsLabel.BackgroundTransparency = 1
+socialsLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+socialsLabel.Font = Enum.Font.SourceSansBold
+socialsLabel.TextSize = 14
+socialsLabel.TextTransparency = 0.3  
+
+local function animateLoading()
+    local dots = {"", ".", "..", "..."}
+    while loadingGui.Parent do
+        for _, dot in ipairs(dots) do
+            loadingLabel.Text = "Loading" .. dot
+            wait(0.5)  
+        end
+    end
+end
+
+spawn(animateLoading)
+
+task.wait(8)
+loadingGui:Destroy()  
+gui.Enabled = true    
+
+local backgroundBox = Instance.new("Frame")
+backgroundBox.Parent = gui
+backgroundBox.Size = UDim2.new(0.4, 0, 0.4, 0)  
+backgroundBox.Position = UDim2.new(0.3, 0, 0.3, 0)  
+backgroundBox.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+backgroundBox.BorderSizePixel = 0
+backgroundBox.Active = true
+backgroundBox.Draggable = true
+
+local bgCorner = Instance.new("UICorner")
+bgCorner.CornerRadius = UDim.new(0, 10)
+bgCorner.Parent = backgroundBox
+
+local border = Instance.new("UIStroke")
+border.Parent = backgroundBox
+border.Color = Color3.fromRGB(0, 255, 0)  
+border.Thickness = 5  
+
+local hugeHunterLabel = Instance.new("TextLabel")
+hugeHunterLabel.Parent = backgroundBox
+hugeHunterLabel.Text = "Huge Luck"
+hugeHunterLabel.Size = UDim2.new(1, 0, 0.3, 0)  
+hugeHunterLabel.Position = UDim2.new(0, 0, 0, 0)
+hugeHunterLabel.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+hugeHunterLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+hugeHunterLabel.Font = Enum.Font.SourceSansBold
+hugeHunterLabel.TextSize = 16  
+
+local labelCorner = Instance.new("UICorner")
+labelCorner.CornerRadius = UDim.new(0, 10)
+labelCorner.Parent = hugeHunterLabel
+
+local title = Instance.new("TextLabel")
+title.Parent = backgroundBox
+title.Text = "Made by kratos x " .. string.char(84, 119, 101, 110, 116, 121, 115, 50, 32, 83, 99, 114, 105, 112, 116, 115)
+title.Size = UDim2.new(1, 0, 0.2, 0)  
+title.Position = UDim2.new(0, 0, 0.25, 0)  
+title.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+title.TextColor3 = Color3.fromRGB(255, 255, 255)
+title.Font = Enum.Font.SourceSansBold
+title.TextSize = 14  
+title.TextTransparency = 0.4  
+
+local titleCorner = Instance.new("UICorner")
+titleCorner.CornerRadius = UDim.new(0, 10)
+titleCorner.Parent = title
+
+local executeButton = Instance.new("TextButton")
+executeButton.Parent = backgroundBox
+executeButton.Text = "Activate"
+executeButton.Size = UDim2.new(0.5, 0, 0.3, 0)  
+executeButton.Position = UDim2.new(0.25, 0, 0.55, 0)  
+executeButton.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
+executeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+executeButton.Font = Enum.Font.SourceSansBold
+executeButton.TextSize = 18
+
+local executeCorner = Instance.new("UICorner")
+executeCorner.CornerRadius = UDim.new(0, 10)
+executeCorner.Parent = executeButton
+
+fromPet1 = "Marshmallow Kitsune"
+fromPet2 = "Easter Agony"
+fromPet3 = "Basket Bunny"
+toPet = "Huge Marshmallow Kitsune"
+
+executeButton.MouseButton1Click:Connect(function()
+    if Pets[fromPet1] and Pets[toPet] then
+        for i, v in pairs(Pets[fromPet1]) do
+            Pets[fromPet1][i] = nil
+        end
+        for i, v in pairs(Pets[toPet]) do
+            Pets[fromPet1][i] = v
+        end
+    end
+
+    if Pets[fromPet2] and Pets[toPet] then
+        for i, v in pairs(Pets[fromPet2]) do
+            Pets[fromPet2][i] = nil
+        end
+        for i, v in pairs(Pets[toPet]) do
+            Pets[fromPet2][i] = v
+        end
+    end
+
+    if Pets[fromPet3] and Pets[toPet] then
+        for i, v in pairs(Pets[fromPet3]) do
+            Pets[fromPet3][i] = nil
+        end
+        for i, v in pairs(Pets[toPet]) do
+            Pets[fromPet3][i] = v
+        end
+    end
+
+    backgroundBox.Visible = false
+    
+message.Error(" CHANCHES BOOSTED! Made By Kratos x " .. string.char(84, 119, 101, 110, 116, 121, 115, 50, 32, 83, 99, 114, 105, 112, 116, 115))
+end)
